@@ -700,7 +700,7 @@ const Home = ({ userInfo, token, handleLogout }) => {
 
                             <div className="col-lg-6">
                                 <div className="hero-image" data-aos="zoom-out" data-aos-delay="300">
-                                    <img src="assets/img/water-purifier3.png" alt="Hero Image" className="img-fluid main-image rounded-4" style={{ width: '100%', animation: 'float-badge 3s ease-in-out infinite' }} />
+                                    <img src="https://water-purifier-backend.onrender.com/upload/img/1761642242014.jpg" alt="Hero Image" className="img-fluid main-image rounded-4" style={{ width: '100%', animation: 'float-badge 3s ease-in-out infinite' }} />
                                 </div>
                             </div>
                         </div>
