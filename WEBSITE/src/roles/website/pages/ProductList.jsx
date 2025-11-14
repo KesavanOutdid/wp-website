@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const ProductList = ({ userInfo, token, handleLogout }) => {
+    const API_BASE_URL = process.env.VITE_API_BASE_URL 
 
     const [products, setProducts] = useState([]);
     const [selectedModelIndex, setSelectedModelIndex] = useState(0);
@@ -22,7 +23,7 @@ const ProductList = ({ userInfo, token, handleLogout }) => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('/api/website/products/productswithplan');
+                const response = await axios.get(`${API_BASE_URL}/api/website/products/productswithplan`);
                 const productArray = response.data?.data || [];
                 const filteredProducts = productArray.filter(
                     (product) =>
@@ -164,7 +165,7 @@ const ProductList = ({ userInfo, token, handleLogout }) => {
             const token = sessionStorage.getItem("WebToken");
 
             // Call order place API
-            const res = await fetch("/api/website/orders/orderplace", {
+            const res = await fetch(`${API_BASE_URL}/api/website/orders/orderplace`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -189,7 +190,7 @@ const ProductList = ({ userInfo, token, handleLogout }) => {
                 name: "Subscription Payment",
                 description: `Subscription for ${durationDays} days`,
                 handler: async (response) => {
-                    const verifyRes = await fetch("/api/website/orders/orderverify", {
+                    const verifyRes = await fetch(`${API_BASE_URL}/api/website/orders/orderverify`, {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -224,7 +225,7 @@ const ProductList = ({ userInfo, token, handleLogout }) => {
                 },
                 modal: {
                     ondismiss: async () => {
-                        await fetch("/api/website/orders/ordercancel", {
+                        await fetch(`${API_BASE_URL}/api/website/orders/ordercancel`, {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
@@ -367,7 +368,7 @@ const ProductList = ({ userInfo, token, handleLogout }) => {
 
         try {
             const response = await fetch(
-                "/api/website/callRequest",
+                `${API_BASE_URL}/api/website/callRequest`,
                 {
                     method: "POST",
                     headers: {

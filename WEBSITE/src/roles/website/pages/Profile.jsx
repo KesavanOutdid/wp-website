@@ -8,6 +8,8 @@ import { getDistricts } from "india-state-district";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Profile = ({ userInfo: propUserInfo, token: propToken, handleLogout }) => {
+    const API_BASE_URL = process.env.VITE_API_BASE_URL 
+
     const sessionUser = (() => {
         try {
             const s = sessionStorage.getItem("WebUser");
@@ -120,7 +122,7 @@ const Profile = ({ userInfo: propUserInfo, token: propToken, handleLogout }) => 
             try {
                 setLoadingProfile(true);
                 const { data: response } = await axios.post(
-                    "/api/app/settings/fetchuserdetails",
+                    `${API_BASE_URL}/api/app/settings/fetchuserdetails`,
                     {
                         user_id: userInfo.user_id,
                         email: userInfo.email,
@@ -257,7 +259,7 @@ const Profile = ({ userInfo: propUserInfo, token: propToken, handleLogout }) => 
 
         try {
             const { data: resp } = await axios.post(
-                "/api/app/settings/updateuserdetails",
+                `${API_BASE_URL}/api/app/settings/updateuserdetails`,
                 payload,
                 {
                     headers: { Authorization: `Bearer ${authToken}` },
