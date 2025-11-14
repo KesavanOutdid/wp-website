@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 // Vite automatically loads .env files — no need for dotenv
-const API_BASE_URL = process.env.VITE_API_BASE_URL || 'https://water-purifier-backend.onrender.com'
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://water-purifier-backend.onrender.com";
 
 export default defineConfig({
     plugins: [react()],
