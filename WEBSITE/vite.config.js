@@ -1,8 +1,12 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import dotenv from 'dotenv'
 
-// Load environment variable from .env file (for local dev only)
-const API_BASE_URL = process.env.VITE_API_BASE_URL || 'https://water-purifier-backend.onrender.com';
+// Load .env file into process.env
+dotenv.config()
+
+// Read from process.env (works in Node)
+const API_BASE_URL = process.env.VITE_API_BASE_URL || 'https://water-purifier-backend.onrender.com'
 
 export default defineConfig({
     plugins: [react()],
@@ -21,4 +25,4 @@ export default defineConfig({
             },
         },
     },
-});
+})
